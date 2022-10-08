@@ -1,40 +1,141 @@
 package at.ac.fhcampuswien;
 
+import java.io.Console;
 import java.util.Scanner;
 
 public class App {
 
     //todo Task 1
-    public void largestNumber(){
-        // input your solution here
+    public void largestNumber() {
+        Scanner scanner = new Scanner(System.in);
+
+        int i = 1;
+        double largestNumber = 0;
+        double d;
+        do {
+            System.out.print(String.format("Number %d: ", i));
+            d = scanner.nextDouble();
+
+            if (i == 1 && d <= 0) {
+                System.out.println("No number entered.");
+                return;
+            }
+
+            if (largestNumber < d) {
+                largestNumber = d;
+            }
+
+            i++;
+        } while (d > 0);
+
+        System.out.println(String.format("%s %.2f", "The largest number is", largestNumber));
     }
 
     //todo Task 2
-    public void stairs(){
-        // input your solution here
+    public void stairs() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("n: ");
+        int stairs = scanner.nextInt();
+
+        if (stairs <= 0) {
+            System.out.println("Invalid number!");
+            return;
+        }
+
+        int n = 1;
+        for (int i = stairs; i > 0; i--) {
+            for (int j = 0; j < stairs - i + 1; j++) {
+                System.out.printf("%d ", n);
+                n++;
+            }
+            System.out.println();
+        }
     }
 
     //todo Task 3
-    public void printPyramid(){
-        // input your solution here
+    public void printPyramid() {
+        final int ROWS = 6;
+
+        int addStars;
+        for (int i = ROWS; i > 0; i--) {
+            addStars = (ROWS - i) * 2;
+
+            for (int k = ROWS; k > addStars / 2 + 1; k--) {
+                System.out.print(" ");
+            }
+
+            for (int j = 0; j < addStars; j++) {
+                System.out.print("*");
+            }
+
+            System.out.println("*");
+        }
     }
 
     //todo Task 4
-    public void printRhombus(){
-        // input your solution here
+    public void printRhombus() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("h: ");
+        int h = scanner.nextInt();
+
+        System.out.print("c: ");
+        char c = scanner.next().charAt(0);
+
+        if (h % 2 == 0) {
+            System.out.println("Invalid number!");
+            return;
+        }
+
+        for (int i = 0; i < h / 2; i++) {
+            for (int k = h - i; k > h / 2 + 1; k--) {
+                System.out.print(" ");
+            }
+
+            for (int j = i; j > 0; j--) {
+                System.out.print((char) (c - j));
+            }
+
+            System.out.print(c);
+
+            for (int j = 1; j < i + 1; j++) {
+                System.out.print((char) (c - j));
+            }
+
+            System.out.println();
+        }
+
+        for (int i = h / 2; i >= 0; i--) {
+            for (int k = h - i; k > h / 2 + 1; k--) {
+                System.out.print(" ");
+            }
+
+            for (int j = i; j > 0; j--) {
+                System.out.print((char) (c - j));
+            }
+
+            System.out.print(c);
+
+            for (int j = 1; j < i + 1; j++) {
+                System.out.print((char) (c - j));
+            }
+
+            System.out.println();
+        }
     }
 
     //todo Task 5
-    public void marks(){
+    public void marks() {
         // input your solution here
     }
 
     //todo Task 6
-    public void happyNumbers(){
+    public void happyNumbers() {
         // input your solution here
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         App exercise2 = new App();
 
         System.out.println("Task 1: Largest Number");
