@@ -158,7 +158,36 @@ public class App {
 
     //todo Task 6
     public void happyNumbers() {
-        // input your solution here
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("n: ");
+        int number = scanner.nextInt();
+
+        int result = 0;
+        int cycle = 0;
+        while (true){
+            while (number != 0){
+                result += (number % 10) * (number % 10);
+                number = number / 10;
+            }
+
+            if (result == 1){
+                System.out.println("Happy number!");
+                return;
+            }
+
+            if (result == 4){
+                if (cycle > 1){
+                    System.out.println("Sad number!");
+                    return;
+                }
+
+                cycle++;
+            }
+
+            number = result;
+            result = 0;
+        }
     }
 
     public static void main(String[] args) {
