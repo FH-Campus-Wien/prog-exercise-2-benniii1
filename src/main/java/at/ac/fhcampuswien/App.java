@@ -127,7 +127,33 @@ public class App {
 
     //todo Task 5
     public void marks() {
-        // input your solution here
+        Scanner scanner = new Scanner(System.in);
+
+        int mark;
+        int sumMarks = 0;
+        int countMarks = 1;
+        int countFive = 0;
+        while (true) {
+            System.out.printf("Mark %d: ", countMarks);
+            mark = scanner.nextInt();
+
+            if (mark == 0) break;
+
+            if (mark < 0 || mark > 5) {
+                System.out.println("Invalid mark!");
+                continue;
+            }
+
+            if (mark == 5) countFive++;
+            sumMarks += mark;
+            countMarks++;
+        }
+
+        countMarks -= 1;
+        float average = countMarks != 0 ? (float)sumMarks/countMarks : 0;
+
+        System.out.println(String.format("%s %.2f", "Average:", average));
+        System.out.println(String.format("%s %d", "Negative marks:", countFive));
     }
 
     //todo Task 6
